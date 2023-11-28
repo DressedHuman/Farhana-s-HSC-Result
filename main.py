@@ -1,27 +1,32 @@
 import os
 import time
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
+# from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.edge.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.edge.options import Options
 
 # Get the current script's directory
 script_directory = os.path.dirname(os.path.realpath(__file__))
 
 # Set the path to the Chromedriver executable in the same directory as the script
-chromedriver_path = os.path.join(script_directory, 'chromedriver.exe')
+# chromedriver_path = os.path.join(script_directory, 'chromedriver.exe')
+edgedriver_path = os.path.join(script_directory, 'msedgedriver.exe')
 
 # Set up Chrome options for headless mode
-chrome_options = Options()
+# chrome_options = Options()
+edge_options = Options()
 # chrome_options.add_argument('--headless')  # Run in headless mode
-chrome_options.add_argument('--disable-gpu')  # Disable GPU acceleration
+# chrome_options.add_argument('--disable-gpu')  # Disable GPU acceleration
+edge_options.add_argument('--disable-gpu')  # Disable GPU acceleration
 
 # Use the Service class to set the path to the Chromedriver executable
-chrome_service = Service(chromedriver_path)
-
+# chrome_service = Service(chromedriver_path)
+edge_service = Service(edgedriver_path)
 # Create a new instance of the Chrome driver with headless options
-driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
-
+# driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+driver = webdriver.Chrome(service=edge_service, options=edge_options)
 # URL of the form page
 form_url = 'http://result.dinajpurboard.gov.bd/hsc_result2023/search/each.php'
 
